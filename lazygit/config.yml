@@ -2,3 +2,12 @@ os:
   editCommand: "nvim"
   editCommandTemplate: "{{editor}} +{{line}} -- {{filename}}"
   openCommand: "open {{filename}}"
+gui:
+  showIcons: true
+  authorColors:
+    "olejech": "green"
+  theme:
+    selectedLineBgColor:
+      - red
+    selectedRangeBgColor:
+      - red
