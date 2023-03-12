@@ -8,6 +8,7 @@ gui:
     "olejech": "green"
   theme:
     selectedLineBgColor:
-      - red
+      - reverse
     selectedRangeBgColor:
-      - red
+      - reverse
+  showFileTree: false
