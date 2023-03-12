@@ -1,0 +1,23 @@
+font:
+  size: 14.0
+  normal:
+    family: "MesloLGSDZ NFM"
+    style: Regular
+  bold:
+    family: "MesloLGSDZ NFM"
+    style: Bold
+  italic:
+    family: "MesloLGSDZ NFM"
+    style: Italic
+
+# shell:
+# program: /bin/zsh
+#     - --login
+window:
+  decorations: None
+  offset:
+    x: 0
+    y: 0
+
+key_bindings:
+  - { key: W, mods: Command, action: None }
