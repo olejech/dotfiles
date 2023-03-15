@@ -12,6 +12,8 @@
   - Tmux plugin manager
 - Oh-my-zsh
 - Vimium
+- MonitorControl
+- Airpods-sound-quality-fixer
 
 ### Change language
 
