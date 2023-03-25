@@ -2,20 +2,20 @@ layouts:
   - fullscreen
   - two-pane
 
-mouse-follows-focus: true
+mouse-follows-focus: false
 
 mod1:
   - control
   - command
 
-mod2:
+mod3:
   - option
 
 focus-ccw:
-  mod: mod2
+  mod: mod3
   key: j
 focus-cw:
-  mod: mod2
+  mod: mod3
   key: k
 swap-screen-ccw:
   mod: mod1
