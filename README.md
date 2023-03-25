@@ -4,7 +4,7 @@
 
 - Karabiner
 - Alacritty
-- Amethyst
+- Amethyst — `~/.amethyst.yml`
 - AstroNvim
 - Ripgrep
 - Lazygit
