@@ -10,9 +10,6 @@ font:
     family: "MesloLGSDZ NFM"
     style: Italic
 
-# shell:
-# program: /bin/zsh
-#     - --login
 window:
   decorations: None
   offset:
