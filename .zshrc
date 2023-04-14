@@ -13,6 +13,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   git
   zsh-autosuggestions
+  zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
