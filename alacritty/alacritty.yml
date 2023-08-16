@@ -1,13 +1,13 @@
 font:
   size: 11.0
   normal:
-    family: "MesloLGSDZ NFM"
+    family: "MesloLGM Nerd Font"
     style: Regular
   bold:
-    family: "MesloLGSDZ NFM"
+    family: "MesloLGM Nerd Font"
     style: Bold
   italic:
-    family: "MesloLGSDZ NFM"
+    family: "MesloLGM Nerd Font"
     style: Italic
 
 window:
