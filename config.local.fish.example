@@ -1,0 +1,3 @@
+set -gx JEST_CMD ""
+set -gx OPENAI_API_KEY ""
+set -gx ZETTELKASTEN_PATH ""
