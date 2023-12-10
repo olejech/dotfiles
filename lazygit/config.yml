@@ -4,8 +4,6 @@ os:
   openCommand: "open {{filename}}"
 gui:
   showIcons: true
-  authorColors:
-    "olejech": "green"
   theme:
     selectedLineBgColor:
       - reverse

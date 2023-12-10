@@ -1,0 +1,2 @@
+services:
+  "git@domain.ru": "gitlab:domain.ru"

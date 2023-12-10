@@ -1,3 +1,4 @@
 .DS_Store
 .open_ai
 config.local.fish
+.lazygit.local.yml
