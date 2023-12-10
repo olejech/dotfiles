@@ -14,7 +14,7 @@
 - Vimium
 - MonitorControl
 - Airpods-sound-quality-fixer
-- Open AI — `~/.config/.open_ai`
+- Codeium
 
 ### Change language
 
