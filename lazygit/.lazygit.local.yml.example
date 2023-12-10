@@ -1,2 +1,7 @@
 services:
   "git@domain.ru": "gitlab:domain.ru"
+git:
+  commitPrefixes:
+    projectName:
+      pattern: "^\\w+\\/(\\w+-\\w+).*" # feat/ABC-123
+      replace: '$1: ' # feat/ABC-123:
