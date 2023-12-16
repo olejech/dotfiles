@@ -4,17 +4,18 @@
 
 - Karabiner
 - Alacritty
-- Amethyst — `~/.amethyst.yml`
-- AstroNvim
+- Amethyst
+- Frontnvim
 - Ripgrep
 - Lazygit
 - Tmux
   - Tmux plugin manager
-- Oh-my-zsh
+- Fish
+  - Fisher
 - Vimium
 - MonitorControl
-- Airpods-sound-quality-fixer
 - Codeium
+- Zettelkasten
 
 ### Change language
 
