@@ -1,7 +1,7 @@
 os:
-  editCommand: "nvim"
-  editCommandTemplate: "{{editor}} +{{line}} -- {{filename}}"
-  openCommand: "open {{filename}}"
+  edit: "nvim"
+  editAtLine: "{{editor}} +{{line}} -- {{filename}}"
+  open: "open {{filename}}"
 gui:
   showIcons: true
   theme:
