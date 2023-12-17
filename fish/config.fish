@@ -8,4 +8,4 @@ fish_vi_key_bindings
 
 source ~/dotfiles/fish/config.local.fish
 
-alias lazygit="lazygit --use-config-file=$LAZY_GIT_LOCAL_CONFIG_PATH"
+alias lazygit="lazygit --use-config-file=$HOME/dotfiles/lazygit/config.yml,$LAZY_GIT_LOCAL_CONFIG_PATH"
