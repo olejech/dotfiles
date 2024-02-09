@@ -1,8 +1,6 @@
 set fish_greeting ""
 set PATH /usr/local/bin $PATH
 
-theme_gruvbox dark hard
-
 # Enable vi-mode
 fish_vi_key_bindings
 
