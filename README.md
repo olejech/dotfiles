@@ -33,6 +33,8 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 `fisher install jomik/fish-gruvbox` — install theme
 
+`fisher install FabioAntunes/fish-nvm edc/bass` — install plugin which support NVM
+
 `which fish` — show path to fish shell
 
 `sudo vim /etc/shells` — add fish path
