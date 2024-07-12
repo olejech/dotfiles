@@ -18,27 +18,6 @@
                 },
                 "rules": [
                     {
-                        "description": "Run wireguard",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "osascript ~/dotfiles/scripts/wireguard.scpt"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Prevent command-m minimize window",
                         "manipulators": [
                             {
