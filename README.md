@@ -14,8 +14,8 @@
   - Fisher
 - Vimium
 - MonitorControl
-- Codeium
-- Zettelkasten
+- Obsidian
+- Raycast
 
 ### Change language
 
