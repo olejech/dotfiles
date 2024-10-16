@@ -29,6 +29,7 @@ tell application "System Events" to tell process "AmneziaVPN" to tell menu bar i
 	get menu items of menu 1
 	try
 		click menu item "Disconnect" of menu 1
+			delay 1
 		tell application "AmneziaVPN" to quit
 		do shell script "echo AmneziaVPN ready to disconnect"
 	on error --menu item toggles between connect/disconnect
