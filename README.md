@@ -40,3 +40,7 @@ Settings -> keyboard -> input sources -> prev language set as F18
 `sudo vim /etc/shells` — add fish path
 
 `chsh -s $(which fish)` — change default shell
+
+### Diff
+
+`brew install difftastic` — install git diff tool

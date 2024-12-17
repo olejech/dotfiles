@@ -10,3 +10,6 @@ gui:
     selectedRangeBgColor:
       - reverse
   showFileTree: false
+git:
+  paging:
+    externalDiffCommand: difft --syntax-highlight=off --background=light
