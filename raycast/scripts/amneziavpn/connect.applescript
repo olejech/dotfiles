@@ -29,9 +29,17 @@ tell application "System Events" to tell process "AmneziaVPN" to tell menu bar i
 	get menu items of menu 1
 	try
 		click menu item "Connect" of menu 1
-		do shell script "echo AmneziaVPN ready to connect"
 	on error --menu item toggles between connect/disconnect
-		# key code 53 --escape key to close menu
-		do shell script "echo Already connected"
 	end try
+end tell
+
+tell application "System Events"
+    tell process "AmneziaVPN"
+        try
+            click button 1 of window 1
+            do shell script "echo AmneziaVPN connected"
+        on error
+            do shell script "echo Failed to close AmneziaVPN window"
+        end try
+    end tell
 end tell
