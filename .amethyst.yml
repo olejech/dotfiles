@@ -5,7 +5,7 @@ layouts:
 mouse-follows-focus: false
 
 mod1:
-  - control
+  - shift
   - command
 
 mod3:
