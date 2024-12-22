@@ -5,24 +5,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Cmd+Tab -> f13",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": { "mandatory": ["command"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f13",
-                                        "modifiers": []
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Run wireguard",
                         "enabled": false,
                         "manipulators": [

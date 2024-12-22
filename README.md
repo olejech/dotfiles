@@ -44,3 +44,9 @@ Settings -> keyboard -> input sources -> prev language set as F18
 ### Diff
 
 `brew install difftastic` — install git diff tool
+
+### Raycast
+
+#### Change cmd + tab to Raycast search windows
+
+`f13 -> switch windows`
