@@ -50,3 +50,9 @@ Settings -> keyboard -> input sources -> prev language set as F18
 #### Change cmd + tab to Raycast search windows
 
 `f13 -> switch windows`
+
+### Scripts
+
+Make `.sh` scripts executable:
+
+`chmod 700 /scripts/*.sh`
