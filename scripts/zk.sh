@@ -10,6 +10,6 @@ if [[ $? -ne 0 ]]; then
 fi
 
 tmux switch-client -t "$session_name" \; send-keys -t "$session_name" "cd $ZETTELKASTEN_PATH; nvim" C-m
-tmux send-keys -t "$session_name" ":Telekasten find_notes" C-m
+tmux send-keys -t "$session_name" ":FzfLua files cwd=Base" C-m
 
 
