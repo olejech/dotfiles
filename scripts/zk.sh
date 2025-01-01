@@ -9,7 +9,5 @@ if [[ $? -ne 0 ]]; then
   TMUX='' tmux new-session -d -s "$session_name"
 fi
 
-tmux switch-client -t "$session_name" \; send-keys -t "$session_name" "cd $ZETTELKASTEN_PATH; nvim" C-m
+tmux switch-client -t "$session_name" \; send-keys -t "$session_name" "cd '$ZETTELKASTEN_PATH'; nvim" C-m
 tmux send-keys -t "$session_name" ":FzfLua files cwd=Base" C-m
-
-
