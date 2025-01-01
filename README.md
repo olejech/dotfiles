@@ -55,4 +55,4 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 Make `.sh` scripts executable:
 
-`chmod 700 /scripts/*.sh`
+`chmod 700 ~/dotfiles/scripts/*.sh`
