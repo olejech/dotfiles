@@ -45,6 +45,10 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 `brew install difftastic` — install git diff tool
 
+### Keyboard layout nvim
+
+Switch keyboard layouts in nvim with [xkb-switch](https://github.com/ivanesmantovich/xkbswitch.nvim) and [input-source-switcher](https://github.com/vovkasm/input-source-switcher)
+
 ### Raycast
 
 #### Change cmd + tab to Raycast search windows
