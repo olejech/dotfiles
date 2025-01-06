@@ -6,7 +6,7 @@ mouse-follows-focus: false
 
 mod1:
   - shift
-  - command
+  - option
 
 mod3:
   - option
