@@ -31,6 +31,8 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 `brew install fish fisher` — install shell & plugin manager
 
+`brew install pwgen` - install password generator
+
 `fisher install jomik/fish-gruvbox` — install theme
 
 `fisher install FabioAntunes/fish-nvm edc/bass` — install plugin which support NVM
