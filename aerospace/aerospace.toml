@@ -140,10 +140,10 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
-alt-shift-h = ['join-with left', 'layout h_tiles', 'mode main']
-alt-shift-j = ['join-with down',  'layout h_tiles', 'mode main']
-alt-shift-k = ['join-with up',  'layout h_tiles', 'mode main']
-alt-shift-l = ['join-with right',  'layout h_tiles', 'mode main']
+alt-shift-h = ['join-with left', 'layout accordion', 'mode main']
+alt-shift-j = ['join-with down',  'layout accordion', 'mode main']
+alt-shift-k = ['join-with up',  'layout accordion', 'mode main']
+alt-shift-l = ['join-with right',  'layout accordion', 'mode main']
 
 down = 'volume down'
 up = 'volume up'
