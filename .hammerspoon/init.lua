@@ -1,5 +1,6 @@
--- require('app-launcher')
+require('app-launcher')
 require('zk')
+require('vocabulary')
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "R", function()
   hs.reload()

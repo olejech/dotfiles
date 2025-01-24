@@ -4,7 +4,7 @@
 
 - Karabiner
 - Alacritty
-- Amethyst
+- Aerospace
 - Frontnvim
 - Ripgrep
 - Lazygit
