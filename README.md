@@ -51,6 +51,10 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 `brew install hazeover` - install tool for window manager
 
+### PastePng
+
+`brew install pngpaste` - install tool for pasting images in notes
+
 ### Keyboard layout nvim
 
 Switch keyboard layouts in nvim with [xkb-switch](https://github.com/ivanesmantovich/xkbswitch.nvim) and [input-source-switcher](https://github.com/vovkasm/input-source-switcher)
