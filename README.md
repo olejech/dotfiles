@@ -65,6 +65,14 @@ Switch keyboard layouts in nvim with [xkb-switch](https://github.com/ivanesmanto
 
 `f13 -> switch windows`
 
+### TouchId
+
+Use TouchId for [sudo](https://gist.github.com/windyinsc/26aaa8783c7734529998062a11d80b96)
+
+### Translator
+
+`brew install --cask easydict`
+
 ### Scripts
 
 Make `.sh` scripts executable:
