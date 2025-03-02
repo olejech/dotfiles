@@ -12,3 +12,6 @@ alias backup="~/dotfiles/scripts/backup.sh"
 alias anki="~/dotfiles/scripts/anki.sh"
 
 zoxide init fish | source
+
+# uv
+fish_add_path "$HOME/.local/bin"
