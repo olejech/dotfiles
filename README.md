@@ -55,6 +55,10 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 `brew install pngpaste` - install tool for pasting images in notes
 
+### Aider
+
+`brew install uv`
+
 ### Keyboard layout nvim
 
 Switch keyboard layouts in nvim with [xkb-switch](https://github.com/ivanesmantovich/xkbswitch.nvim) and [input-source-switcher](https://github.com/vovkasm/input-source-switcher)
@@ -78,3 +82,11 @@ Use TouchId for [sudo](https://gist.github.com/windyinsc/26aaa8783c7734529998062
 Make `.sh` scripts executable:
 
 `chmod 700 ~/dotfiles/scripts/*.sh`
+
+### Git
+
+`git config --global core.excludesFile ~/dotfiles/.gitignore.global` – add global gitignore
+
+### Filemanager
+
+`brew install yazi`
