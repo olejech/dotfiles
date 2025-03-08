@@ -47,9 +47,9 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 `brew install difftastic` — install git diff tool
 
-### Hazeover
+### Focus windows management
 
-`brew install hazeover` - install tool for window manager
+`brew install --cask blurred ` - install tool for focus window manager using blur
 
 ### PastePng
 
