@@ -17,24 +17,25 @@
 # @raycast.author Aaron Miller
 # @raycast.authorURL https://github.com/aaronhmiller
 
--- shouldn't try to disconnect if app isn't running, but sometimes we do things without awareness ;)
-if application "OpenVPN Connect" is running then
-  -- no op
-else
-  return "OpenVPN Connect not running"
+if application "OpenVPN Connect" is not running then
+	return "OpenVPN Connect not running"
 end if
 
-ignoring application responses --removes 5 sec delay (via caching?)
-  tell application "System Events" to tell process "OpenVPN Connect" to click menu bar item 1 of menu bar 2
-end ignoring
-delay 0.1
-do shell script "killall System\\ Events"
+tell application "System Events"
+	tell process "OpenVPN Connect"
+		try
+			click menu bar item 1 of menu bar 2
+			delay 0.3 -- Небольшая задержка для прогрузки меню
 
-tell application "System Events" to tell process "OpenVPN Connect" to tell menu bar item 1 of menu bar 2
-  click
-  get menu items of menu 1
-  try
-    click menu item "Disconnect" of menu 1
-  on error --menu item toggles between connect/disconnect
-  end try
+			set vpnMenu to menu 1 of menu bar item 1 of menu bar 2
+			if exists menu item "Disconnect" of vpnMenu then
+				click menu item "Disconnect" of vpnMenu
+        return "OpenVPN disconnected"
+			else
+				return "Already disconnected or menu item not found"
+			end if
+		on error errMsg
+			return "Error: " & errMsg
+		end try
+	end tell
 end tell
