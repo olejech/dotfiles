@@ -43,13 +43,15 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 `chsh -s $(which fish)` — change default shell
 
+`fish_add_path /opt/homebrew/bin` – add path for brew
+
+### Zoxide
+
+`brew install zoxide` – install zoxide
+
 ### Diff
 
 `brew install difftastic` — install git diff tool
-
-### Focus windows management
-
-`brew install --cask blurred ` - install tool for focus window manager using blur
 
 ### PastePng
 
