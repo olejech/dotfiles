@@ -11,4 +11,4 @@ if ! tmux list-panes -t "$session_name" -F "#{pane_current_command}" | grep -q "
   tmux send-keys -t "$session_name" "cd '$ZETTELKASTEN_PATH'; nvim" C-m
 fi
 
-tmux send-keys -t "$session_name" ":ObsidianQuickSwitch" C-m
+tmux send-keys -t "$session_name" ":Obsidian quick_switch" C-m
