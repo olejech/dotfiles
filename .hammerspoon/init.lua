@@ -1,8 +1,9 @@
-require('app-launcher')
-require('zk')
-require('vocabulary')
+require("app-launcher")
+require("zk")
+require("vocabulary")
+require("music")
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "R", function()
-  hs.reload()
+	hs.reload()
 end)
 hs.alert.show("Config loaded")
