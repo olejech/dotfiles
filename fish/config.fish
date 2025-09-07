@@ -1,6 +1,8 @@
 set fish_greeting ""
 set PATH /usr/local/bin $PATH
 
+set -Ux EDITOR vim
+
 # Enable vi-mode
 fish_vi_key_bindings
 
