@@ -43,6 +43,12 @@ action = "None"
 key = "W"
 mods = "Command"
 
+# fix paste in Russian
+[[keyboard.bindings]]
+action = "Paste"
+key = "М"
+mods = "Command"
+
 [shell]
 program = "/opt/homebrew/bin/fish"
 
