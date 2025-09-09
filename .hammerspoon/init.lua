@@ -2,6 +2,7 @@ require("app-launcher")
 require("zk")
 require("vocabulary")
 require("music")
+require("source-switcher")
 
 hs.hotkey.bind({ "cmd", "ctrl" }, "R", function()
 	hs.reload()
