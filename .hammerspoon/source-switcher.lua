@@ -13,7 +13,6 @@ function applicationWatcher(appName, eventType)
 		local targetInputMethod = appInputMethods[appName]
 		if targetInputMethod then
 			hs.keycodes.currentSourceID("com.apple.keylayout." .. targetInputMethod)
-			hs.alert.show(InputSource[targetInputMethod], 0.3)
 		end
 	end
 end
