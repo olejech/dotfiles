@@ -5,7 +5,7 @@
 #
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Connect OpenVPN
+# @raycast.title Connect OpenVPN (Fixed)
 # @raycast.mode silent
 #
 # Optional parameters:
@@ -13,39 +13,66 @@
 # @raycast.packageName OpenVPN
 #
 # Documentation:
-# @raycast.description Prepares OpenVPN Connect client to connect or reconnect.
+# @raycast.description Improved OpenVPN Connect automation with better error handling.
 # @raycast.author Aaron Miller
 # @raycast.authorURL https://github.com/aaronhmiller
 
-if application "OpenVPN Connect" is running then
-  -- no op
-else
+-- Launch OpenVPN Connect if not running
+if application "OpenVPN Connect" is not running then
   tell application "OpenVPN Connect" to activate
-  delay 3 --wait for init
+  delay 4 -- wait for complete initialization
 end if
 
-ignoring application responses --removes 5 sec delay (via caching?)
-  tell application "System Events" to tell process "OpenVPN Connect" to click menu bar item 1 of menu bar 2
-end ignoring
-delay 0.1
-do shell script "killall System\\ Events"
-
-tell application "System Events" to tell process "OpenVPN Connect" to tell menu bar item 1 of menu bar 2
-  click
-  get menu items of menu 1
+-- Wait for menu bar item to appear
+repeat with i from 1 to 10
   try
-    click menu item "Connect" of menu 1
-  on error --menu item toggles between connect/disconnect
-  end try
-end tell
-
-tell application "System Events"
-    tell process "OpenVPN Connect"
-        try
-            click button 1 of window 1
-            do shell script "echo OpenVPN connected"
-        on error
-            do shell script "echo Failed to close OpenVPN window"
-        end try
+    tell application "System Events" to tell process "OpenVPN Connect"
+      if exists menu bar item 1 of menu bar 2 then exit repeat
     end tell
+  on error
+    -- Menu bar item not ready yet
+  end try
+  delay 0.5
+end repeat
+
+-- Interact with OpenVPN menu
+tell application "System Events" to tell process "OpenVPN Connect"
+  try
+    -- Click menu bar item to open menu
+    click menu bar item 1 of menu bar 2
+    delay 0.3
+    
+    -- Try to find and click Connect/Disconnect menu item
+    tell menu bar item 1 of menu bar 2
+      if exists menu item "Connect" of menu 1 then
+        click menu item "Connect" of menu 1
+        do shell script "echo 'Connecting to VPN...'"
+      else if exists menu item "Disconnect" of menu 1 then
+        click menu item "Disconnect" of menu 1
+        delay 1
+        -- Try to reconnect after disconnect
+        click menu bar item 1 of menu bar 2
+        delay 0.3
+        if exists menu item "Connect" of menu 1 then
+          click menu item "Connect" of menu 1
+          do shell script "echo 'Reconnecting to VPN...'"
+        end if
+      else
+        do shell script "echo 'No Connect/Disconnect option found'"
+        return
+      end if
+    end tell
+    
+    -- Handle any connection dialog
+    delay 1
+    if exists window 1 then
+      if exists button 1 of window 1 then
+        click button 1 of window 1
+        do shell script "echo 'VPN connection initiated'"
+      end if
+    end if
+    
+  on error errorMessage
+    do shell script "echo 'Error: " & errorMessage & "'"
+  end try
 end tell
