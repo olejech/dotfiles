@@ -6,7 +6,6 @@
                 "rules": [
                     {
                         "description": "Change shift + cmd + h/j/k/l to select text",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -64,7 +63,6 @@
                     },
                     {
                         "description": "Cmd+Tab -> f13",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
