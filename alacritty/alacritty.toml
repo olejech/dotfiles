@@ -27,7 +27,7 @@ background = "#F0DFAF"
 text = "#000000"
 
 [font]
-size = 13.0
+size = 13.5
 
 [font.bold]
 family = "MesloLGM Nerd Font"
@@ -49,8 +49,9 @@ action = "Paste"
 key = "М"
 mods = "Command"
 
-[shell]
+[terminal.shell]
 program = "/opt/homebrew/bin/fish"
 
 [window]
 decorations = "None"
+dynamic_padding = true
