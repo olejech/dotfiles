@@ -1,5 +1,5 @@
 #!/bin/bash
-session_name="zk"
+session_name="00-zk"
 
 if ! tmux has-session -t="$session_name" 2>/dev/null; then
   TMUX='' tmux new-session -d -s "$session_name"
