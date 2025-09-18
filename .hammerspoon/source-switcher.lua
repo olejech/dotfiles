@@ -4,7 +4,7 @@ InputSource = {
 }
 
 local appInputMethods = {
-	["Arc"] = "RussianWin",
+	["Zen"] = "US",
 	["Alacritty"] = "US",
 }
 

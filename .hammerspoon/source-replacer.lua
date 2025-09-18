@@ -105,7 +105,7 @@ local function convert(text)
 	end
 end
 
-hs.hotkey.bind({ "ctrl" }, "e", function()
+hs.hotkey.bind({ "ctrl" }, "space", function()
 	hs.eventtap.keyStroke({ "shift", "alt" }, "left")
 
 	hs.eventtap.keyStroke({ "cmd" }, "c")
