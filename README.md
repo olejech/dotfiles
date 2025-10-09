@@ -57,9 +57,9 @@ Settings -> keyboard -> input sources -> prev language set as F18
 
 `brew install pngpaste` - install tool for pasting images in notes
 
-### Aider
+### AI
 
-`brew install uv`
+`brew install claude`
 
 ### Keyboard layout nvim
 
