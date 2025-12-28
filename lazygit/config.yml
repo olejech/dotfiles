@@ -11,5 +11,5 @@ gui:
       - reverse
   showFileTree: false
 git:
-  paging:
-    externalDiffCommand: difft --syntax-highlight=off --background=light --display=inline
+  pagers:
+    - externalDiffCommand: difft --syntax-highlight=off --background=light --display=inline
