@@ -1,6 +1,6 @@
 local modifiers = { "cmd", "ctrl" }
 hs.hotkey.bind(modifiers, "B", function()
-	hs.application.launchOrFocus("Zen")
+	hs.application.launchOrFocus("Helium")
 end)
 
 hs.hotkey.bind(modifiers, "E", function()
