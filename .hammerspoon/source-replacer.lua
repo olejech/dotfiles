@@ -106,15 +106,23 @@ local function convert(text)
 end
 
 hs.hotkey.bind({ "ctrl" }, "space", function()
+	local originalClipboard = hs.pasteboard.getContents()
+
 	hs.eventtap.keyStroke({ "shift", "alt" }, "left")
 
 	hs.eventtap.keyStroke({ "cmd" }, "c")
 
-	local clipboard = hs.pasteboard.getContents()
-	if clipboard and clipboard ~= "" then
-		local converted = convert(clipboard)
+	hs.timer.doAfter(0.05, function()
+		local selectedText = hs.pasteboard.getContents()
+		if selectedText and selectedText ~= "" then
+			local converted = convert(selectedText)
 
-		hs.pasteboard.setContents(converted)
-		hs.eventtap.keyStroke({ "cmd" }, "v")
-	end
+			hs.pasteboard.setContents(converted)
+			hs.eventtap.keyStroke({ "cmd" }, "v")
+		end
+
+		hs.timer.doAfter(0.05, function()
+			hs.pasteboard.setContents(originalClipboard)
+		end)
+	end)
 end)
