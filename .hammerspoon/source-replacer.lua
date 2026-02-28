@@ -76,26 +76,25 @@ for ru, en in pairs(ruToEn) do
 end
 
 local function convertRuToEn(text)
-	local result = ""
+	local result = {}
 	for _, codepoint in utf8.codes(text) do
 		local char = utf8.char(codepoint)
-		result = result .. (ruToEn[char] or char)
+		result[#result + 1] = ruToEn[char] or char
 	end
-	return result
+	return table.concat(result)
 end
 
 local function convertEnToRu(text)
-	local result = ""
+	local result = {}
 	for i = 1, #text do
-		local char = string.sub(text, i, i)
-		result = result .. (enToRu[char] or char)
+		local char = text:sub(i, i)
+		result[#result + 1] = enToRu[char] or char
 	end
-	return result
+	return table.concat(result)
 end
 
 local function convert(text)
 	local current = hs.keycodes.currentSourceID()
-
 	if current == RU then
 		hs.keycodes.currentSourceID(US)
 		return convertRuToEn(text)
@@ -105,21 +104,71 @@ local function convert(text)
 	end
 end
 
+local function isWordChar(char)
+	if char:match("[%w]") then
+		return true
+	end
+	if ruToEn[char] then
+		return true
+	end
+	if enToRu[char] then
+		return true
+	end
+	return false
+end
+
+local function splitLastWord(text)
+	local chars = {}
+	for _, codepoint in utf8.codes(text) do
+		chars[#chars + 1] = utf8.char(codepoint)
+	end
+
+	local wordEnd = #chars
+	while wordEnd > 0 and not isWordChar(chars[wordEnd]) do
+		wordEnd = wordEnd - 1
+	end
+
+	if wordEnd == 0 then
+		return nil
+	end
+
+	local wordStart = wordEnd
+	while wordStart > 1 and isWordChar(chars[wordStart - 1]) do
+		wordStart = wordStart - 1
+	end
+
+	return table.concat(chars, "", 1, wordStart - 1),
+		table.concat(chars, "", wordStart, wordEnd),
+		table.concat(chars, "", wordEnd + 1)
+end
+
 hs.hotkey.bind({ "ctrl" }, "space", function()
 	local originalClipboard = hs.pasteboard.getContents()
 
-	hs.eventtap.keyStroke({ "shift", "alt" }, "left")
-
+	hs.eventtap.keyStroke({ "shift", "cmd" }, "left")
 	hs.eventtap.keyStroke({ "cmd" }, "c")
 
 	hs.timer.doAfter(0.05, function()
-		local selectedText = hs.pasteboard.getContents()
-		if selectedText and selectedText ~= "" then
-			local converted = convert(selectedText)
+		local lineText = hs.pasteboard.getContents()
 
-			hs.pasteboard.setContents(converted)
-			hs.eventtap.keyStroke({ "cmd" }, "v")
+		if not lineText or lineText == "" then
+			hs.eventtap.keyStroke({}, "right")
+			hs.pasteboard.setContents(originalClipboard)
+			return
 		end
+
+		local prefix, word, suffix = splitLastWord(lineText)
+
+		if not word then
+			hs.eventtap.keyStroke({}, "right")
+			hs.pasteboard.setContents(originalClipboard)
+			return
+		end
+
+		local newLine = prefix .. convert(word) .. suffix
+
+		hs.pasteboard.setContents(newLine)
+		hs.eventtap.keyStroke({ "cmd" }, "v")
 
 		hs.timer.doAfter(0.05, function()
 			hs.pasteboard.setContents(originalClipboard)
