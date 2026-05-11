@@ -117,12 +117,10 @@ alt-shift-equal = 'resize smart +100'
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-d = 'workspace D'
 alt-s = 'workspace S'
-alt-a = 'workspace A' 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-d = 'move-node-to-workspace D'
 alt-shift-s = 'move-node-to-workspace S'
-alt-shift-a = 'move-node-to-workspace A'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
