@@ -4,7 +4,7 @@
 #
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Connect Amnezia VPN (Fixed)
+# @raycast.title Connect Amnezia VPN
 # @raycast.mode silent
 #
 # Optional parameters:

@@ -5,7 +5,7 @@
 #
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Connect OpenVPN (Fixed)
+# @raycast.title Connect OpenVPN
 # @raycast.mode silent
 #
 # Optional parameters:
