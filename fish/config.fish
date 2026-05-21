@@ -6,6 +6,9 @@ set -Ux EDITOR vim
 # Enable vi-mode
 fish_vi_key_bindings
 
+# Clear screen with Ctrl+U
+bind \cu 'clear; commandline -f repaint'
+
 source ~/dotfiles/fish/config.local.fish
 
 alias lazygit="lazygit --use-config-file=$HOME/dotfiles/lazygit/config.yml,$LAZY_GIT_LOCAL_CONFIG_PATH"
