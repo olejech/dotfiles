@@ -2,7 +2,7 @@ require("app-launcher")
 require("zk")
 require("vocabulary")
 require("music")
-require("source-switcher")
+-- require("source-switcher")
 require("source-replacer")
 require("screenshot")
 
