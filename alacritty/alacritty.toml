@@ -27,7 +27,7 @@ background = "#F0DFAF"
 text = "#000000"
 
 [font]
-size = 13.5
+size = 14
 
 [font.bold]
 family = "MesloLGM Nerd Font"
