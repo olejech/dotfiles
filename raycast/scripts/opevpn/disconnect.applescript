@@ -18,24 +18,19 @@
 # @raycast.authorURL https://github.com/aaronhmiller
 
 if application "OpenVPN Connect" is not running then
-	return "OpenVPN Connect not running"
+  return "OpenVPN Connect not running"
 end if
 
-tell application "System Events"
-	tell process "OpenVPN Connect"
-		try
-			click menu bar item 1 of menu bar 2
-			delay 0.3 -- Небольшая задержка для прогрузки меню
-
-			set vpnMenu to menu 1 of menu bar item 1 of menu bar 2
-			if exists menu item "Disconnect" of vpnMenu then
-				click menu item "Disconnect" of vpnMenu
-        return "OpenVPN disconnected"
-			else
-				return "Already disconnected or menu item not found"
-			end if
-		on error errMsg
-			return "Error: " & errMsg
-		end try
-	end tell
+tell application "System Events" to tell process "OpenVPN Connect"
+  try
+    click menu item "Disconnect" of menu 1 of menu bar item 1 of menu bar 2
+    return "OpenVPN disconnected"
+  on error
+    try
+      click menu item "Disconnect" of menu 1 of menu bar item 1 of menu bar 1
+      return "OpenVPN disconnected"
+    on error
+      return "Already disconnected"
+    end try
+  end try
 end tell
