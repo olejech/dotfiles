@@ -1,3 +1,5 @@
+local blockCmdTab = require("block-cmd-tab")
+
 local RU = "com.apple.keylayout.RussianWin"
 local US = "com.apple.keylayout.US"
 
@@ -104,74 +106,84 @@ local function convert(text)
 	end
 end
 
-local function isWordChar(char)
-	if char:match("[%w]") then
-		return true
+-- Copy the current selection and wait until the pasteboard actually updates,
+-- polling changeCount instead of relying on a fixed timer. The target app
+-- updates the pasteboard from its own process, so the short busy-wait here is
+-- safe and returns as soon as the data is ready.
+local function copySelection()
+	local startCount = hs.pasteboard.changeCount()
+	hs.eventtap.keyStroke({ "cmd" }, "c", 0)
+
+	local deadline = hs.timer.secondsSinceEpoch() + 0.3
+	while hs.timer.secondsSinceEpoch() < deadline do
+		if hs.pasteboard.changeCount() ~= startCount then
+			return hs.pasteboard.getContents()
+		end
+		hs.timer.usleep(2000)
 	end
-	if ruToEn[char] then
-		return true
-	end
-	if enToRu[char] then
-		return true
-	end
-	return false
+	return nil
 end
 
-local function splitLastWord(text)
-	local chars = {}
-	for _, codepoint in utf8.codes(text) do
-		chars[#chars + 1] = utf8.char(codepoint)
+local function replaceWord()
+	local originalClipboard = hs.pasteboard.getContents()
+
+	-- Select from the cursor back to the start of the line, then find the
+	-- trailing run of non-whitespace characters ourselves. alt+shift+left
+	-- (OS word-boundary selection) treats punctuation like "," as a
+	-- boundary, so it would leave it out of the replacement; splitting on
+	-- whitespace only fixes that.
+	hs.eventtap.keyStroke({ "cmd", "shift" }, "left", 0)
+
+	local lineBeforeCursor = copySelection()
+
+	if not lineBeforeCursor or lineBeforeCursor == "" then
+		hs.eventtap.keyStroke({}, "right", 0)
+		if originalClipboard then
+			hs.pasteboard.setContents(originalClipboard)
+		end
+		return
 	end
 
-	local wordEnd = #chars
-	while wordEnd > 0 and not isWordChar(chars[wordEnd]) do
-		wordEnd = wordEnd - 1
+	-- Trailing whitespace (e.g. the cursor sitting right after a space) is
+	-- captured separately so it can be preserved unchanged instead of
+	-- swallowing the match and leaving no word to convert.
+	local word, trailingSpace = lineBeforeCursor:match("(%S+)(%s*)$")
+
+	if not word or word == "" then
+		hs.eventtap.keyStroke({}, "right", 0)
+		if originalClipboard then
+			hs.pasteboard.setContents(originalClipboard)
+		end
+		return
 	end
 
-	if wordEnd == 0 then
-		return nil
+	local prefix = lineBeforeCursor:sub(1, #lineBeforeCursor - #word - #trailingSpace)
+
+	-- Shrink the selection back down to just the word (plus its trailing
+	-- whitespace) instead of retyping the whole line: with many words in
+	-- the field, resending the unchanged prefix as synthetic keystrokes is
+	-- what made this slow. shift+right moves the selection's active edge
+	-- (the one just extended by cmd+shift+left) back toward the cursor,
+	-- shrinking from the left without touching the anchor.
+	local prefixCharCount = utf8.len(prefix) or #prefix
+	for _ = 1, prefixCharCount do
+		hs.eventtap.keyStroke({ "shift" }, "right", 0)
 	end
 
-	local wordStart = wordEnd
-	while wordStart > 1 and isWordChar(chars[wordStart - 1]) do
-		wordStart = wordStart - 1
-	end
+	-- keyStrokes sends unicode characters, so the converted text is inserted
+	-- as-is regardless of the active keyboard layout, replacing the selection.
+	hs.eventtap.keyStrokes(convert(word) .. trailingSpace)
 
-	return table.concat(chars, "", 1, wordStart - 1),
-		table.concat(chars, "", wordStart, wordEnd),
-		table.concat(chars, "", wordEnd + 1)
+	if originalClipboard then
+		hs.pasteboard.setContents(originalClipboard)
+	end
 end
 
 hs.hotkey.bind({ "ctrl" }, "space", function()
-	local originalClipboard = hs.pasteboard.getContents()
-
-	hs.eventtap.keyStroke({ "shift", "cmd" }, "left")
-	hs.eventtap.keyStroke({ "cmd" }, "c")
-
-	hs.timer.doAfter(0.05, function()
-		local lineText = hs.pasteboard.getContents()
-
-		if not lineText or lineText == "" then
-			hs.eventtap.keyStroke({}, "right")
-			hs.pasteboard.setContents(originalClipboard)
-			return
-		end
-
-		local prefix, word, suffix = splitLastWord(lineText)
-
-		if not word then
-			hs.eventtap.keyStroke({}, "right")
-			hs.pasteboard.setContents(originalClipboard)
-			return
-		end
-
-		local newLine = prefix .. convert(word) .. suffix
-
-		hs.pasteboard.setContents(newLine)
-		hs.eventtap.keyStroke({ "cmd" }, "v")
-
-		hs.timer.doAfter(0.05, function()
-			hs.pasteboard.setContents(originalClipboard)
-		end)
-	end)
+	blockCmdTab.suspend()
+	local ok, err = pcall(replaceWord)
+	blockCmdTab.resume()
+	if not ok then
+		error(err)
+	end
 end)
