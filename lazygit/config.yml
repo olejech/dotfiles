@@ -1,6 +1,7 @@
 os:
-  edit: "nvim"
-  editAtLine: "{{editor}} +{{line}} -- {{filename}}"
+  edit: "nvim -- {{filename}}"
+  editAtLine: "nvim +{{line}} -- {{filename}}"
+  editAtLineAndWait: "nvim +{{line}} {{filename}}"
   open: "open {{filename}}"
 gui:
   showIcons: true
@@ -13,3 +14,6 @@ gui:
 git:
   pagers:
     - externalDiffCommand: difft --syntax-highlight=off --background=light --display=inline
+keybinding:
+  universal:
+    edit: "e"
