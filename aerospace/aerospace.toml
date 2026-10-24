@@ -127,11 +127,11 @@ alt-1 = 'workspace 1'
 # alt-3 = 'workspace 3'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-d = 'move-node-to-workspace D'
-alt-shift-s = 'move-node-to-workspace S'
-alt-shift-a = 'move-node-to-workspace A'
-alt-shift-m = 'move-node-to-workspace M'
-alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-d = 'move-node-to-workspace D --focus-follows-window'
+alt-shift-s = 'move-node-to-workspace S --focus-follows-window'
+alt-shift-a = 'move-node-to-workspace A --focus-follows-window'
+alt-shift-m = 'move-node-to-workspace M --focus-follows-window'
+alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
 # alt-shift-2 = 'move-node-to-workspace 2'
 # alt-shift-3 = 'move-node-to-workspace 3'
 
